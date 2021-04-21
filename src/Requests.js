@@ -1,10 +1,9 @@
 import ReactDOM from 'react-dom';
+const axios = require('axios');
+const instagramURL = "https://graph.instagram.com/"
 
 async function UserProfile(){
-	const axios = require('axios');
-	var userToken = "IGQVJVekZAaN0hhX1BFdmc3MUpoTTVXZA0NZAa3UyVWdYZAEFCczJnZAkRvMHdoNnVIRkxuX1cwNFdpcFRYQjVySU5URnAyRDdsNHRub21uZAEI3eVlqenpfYUVib3FjQk9UVW9rcEliNF9B";
 	var userToken = document.getElementById('input').value;
-	var instagramURL = "https://graph.instagram.com/"
 	
 	const response  = await axios.get(instagramURL+"me", {
 		params: {
@@ -17,29 +16,13 @@ async function UserProfile(){
 	var data = response.data;
 	const mediaIds = data['media']['data'];
 	const username = data['username'];
-	/*
-	"data": [
-		{
-		  "id": "17895695668004550"
-		},
-		{
-		  "id": "17899305451014820"
-		},
-		{
-		  "id": "17896450804038745"
-		},
-		{
-		  "id": "17881042411086627"
-		}
-	  ]*/
 	
-	//window.alert(Object.keys(response.data['media']['data'][1]));
-	//window.alert(response.data['media']['data'][1]['id']);
-	
+	// render profile
 	var url = "https://instagram.com/"+username;
-	const profile = <a href={url}> {username} </a>;
+	const profile = <a href={url}> @{username} </a>;
 	ReactDOM.render(profile, document.getElementById('profile'));
 	
+	// get media
 	const mediaHtml = []; 
 	var id;
 	for (id in mediaIds){
@@ -47,36 +30,39 @@ async function UserProfile(){
 		//window.alert(mediaId);
 		const response  = await axios.get(instagramURL+mediaId, {
 			params: {
-				fields: 'id,caption,media_url,timestamp',
+				fields: 'id,caption,media_url,timestamp,media_type',
 				access_token: userToken,
 			},
 		});
 		var data = response['data'];
 		
-		//window.alert(Object.keys(response['data']));
-		var img = 
-		<div class="media-img">
-			<div class="container">
-				<img src={data['media_url']} alt={data['caption']}>
-				</img>
-				<span class="caption">
-					{data['caption']}
-				</span>
-			</div>
-		</div>;
+		var htmlMedia = null;
 		
-		mediaHtml.push(img);
+		if (data['media_type'] == "IMAGE") {
+			htmlMedia =
+			<div id="media-img">
+				<img src={data['media_url']} alt={data['caption']}/>
+				<br/>
+				<a href={data['media_url']}> {data['caption']} </a>
+			</div>;
+		} else if (data['media_type'] == "VIDEO") {
+			htmlMedia = 
+			<div class="media-video">
+				<div class="container">
+					<video src={data['media_url']} controls> 
+						 Your browser does not support the video tag.
+					</video>
+					<br/>
+					<a href={data['media_url']}> {data['caption']} </a>
+				</div>
+			</div>;
+		}
+		
+		mediaHtml.push(htmlMedia);
 	}
 	
+	// render media
 	ReactDOM.render(mediaHtml, document.getElementById('media'));
 }
-
-/*function UserProfile() {
-	const username = TestUserProfile();
-	
-	var url = "https://instagram.com/"+username;
-	const profile = <a href={url}> {username} </a>;
-	ReactDOM.render(profile, document.getElementById('profile'));
-}*/
 
 export default UserProfile;

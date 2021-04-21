@@ -5,7 +5,7 @@ import UserProfile from './Requests';
 function App() {
 	return (
 		[<div class="form" id='form'>
-			<input placeholder="Token here" id="input"/>,
+			<input placeholder="Token here" id="input"/>
 			<button onClick={UserProfile}> Request </button>
 		</div>,
 		

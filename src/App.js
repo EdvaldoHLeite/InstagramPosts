@@ -1,25 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
+import UserProfile from './Requests';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		[<div class="form" id='form'>
+			<input placeholder="Token here" id="input"/>,
+			<button onClick={UserProfile}> Request </button>
+		</div>,
+		
+		<div class="profile" id="profile"> </div>,
+		<div class="media" id='media'> </div>]
+	);
 }
 
 export default App;

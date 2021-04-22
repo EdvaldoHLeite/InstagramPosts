@@ -34,18 +34,18 @@ async function UserProfile(){
 				access_token: userToken,
 			},
 		});
-		var data = response['data'];
+		data = response['data'];
 		
 		var htmlMedia = null;
 		
-		if (data['media_type'] == "IMAGE") {
+		if (data['media_type'] === "IMAGE") {
 			htmlMedia =
 			<div id="media-img">
 				<img src={data['media_url']} alt={data['caption']}/>
 				<br/>
 				<a href={data['media_url']}> {data['caption']} </a>
 			</div>;
-		} else if (data['media_type'] == "VIDEO") {
+		} else if (data['media_type'] === "VIDEO") {
 			htmlMedia = 
 			<div id="media-img">
 				<video src={data['media_url']} controls> 

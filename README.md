@@ -1,17 +1,17 @@
-### InstagramPosts
+# InstagramPosts
 Aplicação Web para visualização de postagens no Instagram.
 
-### Desenvolvido por Edvaldo H. L.
+#### Desenvolvido por Edvaldo H. L.
 
-## Recursos 
+#### Recursos 
 Foi desenvolvido em JavaScript e React. E o deployment realizado no Netlify.
 
-## Como usar
-# Link da aplicação
+#### Como usar
+##### Link da aplicação
 Pode ser acessado online por meio deste site:
 https://instagram-posts-edvaldo.netlify.app/
 
-# Rodando código fonte
+##### Rodando código fonte
 Instalando as depedências do yarn, react e a biblioteca do axios. Tendo já o node.js instalado.
 
 Para instalar yarn.

@@ -44,9 +44,30 @@ body {
 img {
 	display: inline;
 	border-style: outset;
+	height: 300px;
+	width: 300px;
 }
 
-#media-img = {
+video {
+	display: inline;
+	border-style: outset;
+	height: 300px;
+	width: 300px;
+}
+
+#media-img {
 	border-style: double;
-	border-width: medium;
+	
+	height: 350px;
+	width: 305px;
+	display: inline-block;
+}
+
+div {
+  margin-right: 40px;
+  margin-top: 40px;
+}
+
+input {
+	width: 600px;
 }

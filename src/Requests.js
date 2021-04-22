@@ -47,14 +47,12 @@ async function UserProfile(){
 			</div>;
 		} else if (data['media_type'] == "VIDEO") {
 			htmlMedia = 
-			<div class="media-video">
-				<div class="container">
-					<video src={data['media_url']} controls> 
-						 Your browser does not support the video tag.
-					</video>
-					<br/>
-					<a href={data['media_url']}> {data['caption']} </a>
-				</div>
+			<div id="media-img">
+				<video src={data['media_url']} controls> 
+					 Your browser does not support the video tag.
+				</video>
+				<br/>
+				<a href={data['media_url']}> {data['caption']} </a>
 			</div>;
 		}
 		

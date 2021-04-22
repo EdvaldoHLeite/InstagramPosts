@@ -8,7 +8,7 @@ Foi desenvolvido em JavaScript e React. E o deployment realizado no Netlify.
 
 #### Como usar
 Preenchendo o token, da conta do Instagram em questão, no campo que irá aparecer. 
-O token pode ser gerado neste site: https://token.dsplay.tv/instagram
+O token pode ser gerado neste site: https://token.dsplay.tv/instagram.
 Após confirmar as postagens serão mostradas.
 
 ##### Link da aplicação
